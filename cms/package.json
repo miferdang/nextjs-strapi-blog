@@ -1,0 +1,35 @@
+{
+  "name": "simple-js-blog",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A simple blog built with Nextjs + Strapi & Graphql",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@strapi/strapi": "4.24.5",
+    "@strapi/plugin-users-permissions": "4.24.5",
+    "@strapi/plugin-i18n": "4.24.5",
+    "@strapi/plugin-cloud": "4.24.5",
+    "mysql": "2.18.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "5.3.4",
+    "styled-components": "5.3.3"
+  },
+  "author": {
+    "name": "Miferdang & Strapi's Developers"
+  },
+  "strapi": {
+    "uuid": "8278fd45-d588-4320-a90f-e40a3b045d64"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
