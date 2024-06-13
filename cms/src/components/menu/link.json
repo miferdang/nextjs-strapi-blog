@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_menu_links",
+  "info": {
+    "displayName": "Link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Label": {
+      "type": "string",
+      "required": true,
+      "maxLength": 1000,
+      "minLength": 1
+    },
+    "Title": {
+      "type": "string",
+      "maxLength": 1000,
+      "minLength": 1
+    },
+    "Url": {
+      "type": "string",
+      "required": true,
+      "maxLength": 1000,
+      "minLength": 1
+    },
+    "Target": {
+      "type": "enumeration",
+      "enum": [
+        "_blank",
+        "_self",
+        "_parent",
+        "_top",
+        "framename"
+      ],
+      "default": "_self",
+      "required": true
+    },
+    "Icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": false
+    }
+  }
+}
