@@ -16,6 +16,7 @@ export type Scalars = {
   Float: { input: number; output: number; }
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: { input: any; output: any; }
+  HomePageBlocksDynamicZoneInput: { input: any; output: any; }
   /** A string used to identify an i18n locale */
   I18NLocaleCode: { input: any; output: any; }
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
@@ -109,6 +110,30 @@ export type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type ComponentBlockSectionAbout = {
+  __typename?: 'ComponentBlockSectionAbout';
+  Content: Scalars['String']['output'];
+  Media: UploadFileEntityResponse;
+  MediaFirst: Scalars['Boolean']['output'];
+  Readmore: ComponentButtonLink;
+  Title: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+};
+
+export type ComponentBlockSectionHero = {
+  __typename?: 'ComponentBlockSectionHero';
+  Description?: Maybe<Scalars['String']['output']>;
+  Title: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+};
+
+export type ComponentButtonLink = {
+  __typename?: 'ComponentButtonLink';
+  Label: Scalars['String']['output'];
+  Url: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+};
+
 export type ComponentMenuLink = {
   __typename?: 'ComponentMenuLink';
   Icon?: Maybe<UploadFileEntityResponse>;
@@ -171,6 +196,12 @@ export enum Enum_Componentmenulink_Target {
   Top = 'top'
 }
 
+export type Error = {
+  __typename?: 'Error';
+  code: Scalars['String']['output'];
+  message?: Maybe<Scalars['String']['output']>;
+};
+
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']['input']>;
   caption?: InputMaybe<Scalars['String']['input']>;
@@ -202,7 +233,45 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = Article | ComponentMenuLink | I18NLocale | Navigation | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Article | ComponentBlockSectionAbout | ComponentBlockSectionHero | ComponentButtonLink | ComponentMenuLink | HomePage | I18NLocale | Navigation | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+
+export type HomePage = {
+  __typename?: 'HomePage';
+  Blocks?: Maybe<Array<Maybe<HomePageBlocksDynamicZone>>>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  locale?: Maybe<Scalars['String']['output']>;
+  localizations?: Maybe<HomePageRelationResponseCollection>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type HomePageLocalizationsArgs = {
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+export type HomePageBlocksDynamicZone = ComponentBlockSectionAbout | ComponentBlockSectionHero | Error;
+
+export type HomePageEntity = {
+  __typename?: 'HomePageEntity';
+  attributes?: Maybe<HomePage>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type HomePageEntityResponse = {
+  __typename?: 'HomePageEntityResponse';
+  data?: Maybe<HomePageEntity>;
+};
+
+export type HomePageInput = {
+  Blocks?: InputMaybe<Array<Scalars['HomePageBlocksDynamicZoneInput']['input']>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type HomePageRelationResponseCollection = {
+  __typename?: 'HomePageRelationResponseCollection';
+  data: Array<HomePageEntity>;
+};
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -321,6 +390,7 @@ export type Mutation = {
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
   createArticle?: Maybe<ArticleEntityResponse>;
   createArticleLocalization?: Maybe<ArticleEntityResponse>;
+  createHomePageLocalization?: Maybe<HomePageEntityResponse>;
   createNavigationLocalization?: Maybe<NavigationEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -329,6 +399,7 @@ export type Mutation = {
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteArticle?: Maybe<ArticleEntityResponse>;
+  deleteHomePage?: Maybe<HomePageEntityResponse>;
   deleteNavigation?: Maybe<NavigationEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -349,6 +420,7 @@ export type Mutation = {
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateArticle?: Maybe<ArticleEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
+  updateHomePage?: Maybe<HomePageEntityResponse>;
   updateNavigation?: Maybe<NavigationEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -375,6 +447,13 @@ export type MutationCreateArticleArgs = {
 
 export type MutationCreateArticleLocalizationArgs = {
   data?: InputMaybe<ArticleInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationCreateHomePageLocalizationArgs = {
+  data?: InputMaybe<HomePageInput>;
   id?: InputMaybe<Scalars['ID']['input']>;
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
@@ -409,6 +488,11 @@ export type MutationCreateUsersPermissionsUserArgs = {
 
 export type MutationDeleteArticleArgs = {
   id: Scalars['ID']['input'];
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationDeleteHomePageArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
@@ -488,6 +572,12 @@ export type MutationUpdateArticleArgs = {
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID']['input'];
   info?: InputMaybe<FileInfoInput>;
+};
+
+
+export type MutationUpdateHomePageArgs = {
+  data: HomePageInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
 
@@ -598,6 +688,7 @@ export type Query = {
   __typename?: 'Query';
   article?: Maybe<ArticleEntityResponse>;
   articles?: Maybe<ArticleEntityResponseCollection>;
+  homePage?: Maybe<HomePageEntityResponse>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
@@ -625,6 +716,12 @@ export type QueryArticlesArgs = {
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryHomePageArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  publicationState?: InputMaybe<PublicationState>;
 };
 
 
@@ -1096,10 +1193,16 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type GetHomePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetHomePageQuery = { __typename?: 'Query', homePage?: { __typename?: 'HomePageEntityResponse', data?: { __typename?: 'HomePageEntity', attributes?: { __typename?: 'HomePage', Blocks?: Array<{ __typename: 'ComponentBlockSectionAbout', Title: string, Content: string, MediaFirst: boolean, Readmore: { __typename?: 'ComponentButtonLink', Label: string, Url: string }, Media: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } } | { __typename: 'ComponentBlockSectionHero', Title: string, Description?: string | null } | { __typename?: 'Error' } | null> | null } | null } | null } | null };
+
 export type GetNavigationQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetNavigationQuery = { __typename?: 'Query', navigation?: { __typename?: 'NavigationEntityResponse', data?: { __typename?: 'NavigationEntity', attributes?: { __typename?: 'Navigation', Logo: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, caption?: string | null } | null } | null }, Menus?: Array<{ __typename?: 'ComponentMenuLink', Label: string, Title?: string | null, Target: Enum_Componentmenulink_Target, Url: string } | null> | null } | null } | null } | null };
 
 
+export const GetHomePageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHomePage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"homePage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Blocks"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ComponentBlockSectionHero"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Description"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ComponentBlockSectionAbout"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Content"}},{"kind":"Field","name":{"kind":"Name","value":"MediaFirst"}},{"kind":"Field","name":{"kind":"Name","value":"Readmore"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"Media"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetHomePageQuery, GetHomePageQueryVariables>;
 export const GetNavigationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetNavigation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"navigation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Logo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"caption"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"Menus"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"Label"}},{"kind":"Field","name":{"kind":"Name","value":"Title"}},{"kind":"Field","name":{"kind":"Name","value":"Target"}},{"kind":"Field","name":{"kind":"Name","value":"Url"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetNavigationQuery, GetNavigationQueryVariables>;
