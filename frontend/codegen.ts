@@ -2,7 +2,7 @@ import type { CodegenConfig } from "@graphql-codegen/cli";
 
 // Config - use code gen for generating graphql commands in @/graphql/gqls to @graphql/codegen
 const config: CodegenConfig = {
-    schema: process.env.NEXT_PUBLIC_CMS_URL,
+    schema: "http://localhost:1337/graphql",
     documents: ["graphql/gqls/**/*.ts"],
     generates: {
         "./graphql/codegen/": {
