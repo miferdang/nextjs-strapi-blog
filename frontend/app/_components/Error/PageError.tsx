@@ -2,7 +2,7 @@ import { Box, Container, Flex, Heading, Text } from "@radix-ui/themes";
 import Image from "next/image";
 
 // Define - type of props
-type Props = Readonly<{
+type TProps = Readonly<{
     status: number;
     title: string;
     imageUrl?: string;
@@ -10,7 +10,7 @@ type Props = Readonly<{
 }>;
 
 // Component - error display for page
-const PageError = ({ status, title, imageUrl, extra }: Props) => {
+const PageError = ({ status, title, imageUrl, extra }: TProps) => {
     return (
         <Box flexBasis="auto" flexGrow="1" flexShrink="1">
             <Container size="4">

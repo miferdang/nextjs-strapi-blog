@@ -6,7 +6,7 @@ import ApolloProvider from "./_providers/ApolloProvider";
 import "./globals.css";
 
 // Define - type of props
-type Props = Readonly<{
+type TProps = Readonly<{
     children: React.ReactNode;
 }>;
 
@@ -23,7 +23,7 @@ const beVietnamPro = Be_Vietnam_Pro({
 });
 
 // Layout - root layout
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({ children }: TProps) {
     return (
         <html lang="en">
             <body className={beVietnamPro.className}>

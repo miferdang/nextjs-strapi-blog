@@ -6,12 +6,12 @@ import PageLoading from "./_components/Loading/PageLoading";
 import Navbar from "./_components/Navbar/Navbar";
 
 // Define - type of props
-type Props = Readonly<{
+type TProps = Readonly<{
     children: React.ReactNode;
 }>;
 
 // Template - root
-export default function RootTemplate({ children }: Props) {
+export default function RootTemplate({ children }: TProps) {
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     // Initial loading
