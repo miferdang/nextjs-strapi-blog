@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_block_section_abouts",
+  "info": {
+    "displayName": "SectionAbout",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 500,
+      "minLength": 1
+    },
+    "Content": {
+      "type": "richtext",
+      "required": true,
+      "maxLength": 5000,
+      "minLength": 1
+    },
+    "Media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "MediaFirst": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "Readmore": {
+      "type": "component",
+      "repeatable": false,
+      "component": "button.link",
+      "required": true
+    }
+  }
+}

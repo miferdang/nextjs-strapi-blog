@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_button_links",
+  "info": {
+    "displayName": "Link"
+  },
+  "options": {},
+  "attributes": {
+    "Label": {
+      "type": "string",
+      "maxLength": 1000,
+      "minLength": 1,
+      "required": true
+    },
+    "Url": {
+      "type": "string",
+      "required": true,
+      "maxLength": 1000,
+      "minLength": 1
+    }
+  }
+}
