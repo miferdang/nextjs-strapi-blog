@@ -12,10 +12,10 @@ const Navbar = () => {
     const router = useRouter();
     const pathname = usePathname();
     const { data }: { data: GetNavigationQuery } = useSuspenseQuery(GetNavigationDocument);
-    const { navigation } = flattenResponse(data);
+    const { logo, menus } = data.navigation?.data?.attributes ?? {};
 
     return (
-        <Flex flexBasis="auto" flexGrow="0" flexShrink="1">
+        <Flex flexBasis="auto" flexGrow="0" flexShrink="1" className="border-b border-gray-300">
             <Container size="4">
                 <Flex align="center" justify="between">
                     {/* Component - left side */}
@@ -26,23 +26,23 @@ const Navbar = () => {
                                 width={40}
                                 height={40}
                                 loader={cmsImageLoader}
-                                src={navigation.Logo.url || ""}
-                                alt={navigation.Logo.alternativeText || ""}
+                                src={logo?.data?.attributes?.url || ""}
+                                alt={logo?.data?.attributes?.alternativeText || ""}
                             />
                         </Box>
 
                         {/* Component - menus */}
                         <Flex align="center" gap="6" p="4">
-                            {navigation.Menus?.length
-                                ? navigation.Menus.map((menu: any, idx: number) => {
+                            {menus?.length
+                                ? menus.map((menu, idx: number) => {
                                       return (
                                           <Link
                                               key={idx}
-                                              href={menu?.Url || ""}
+                                              href={menu?.url || ""}
                                               color="gray"
-                                              highContrast={pathname === menu?.Url ? true : false}
+                                              highContrast={pathname === menu?.url ? true : false}
                                           >
-                                              {menu?.Label}
+                                              {menu?.label}
                                           </Link>
                                       );
                                   })
