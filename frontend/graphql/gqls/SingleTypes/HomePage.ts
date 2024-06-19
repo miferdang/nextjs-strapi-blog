@@ -1,29 +1,92 @@
 import { gql } from "@apollo/client";
 
+// Query - get home page blocks
 gql`
     query GetHomePage {
         homePage {
             data {
                 attributes {
-                    Blocks {
-                        ... on ComponentBlockSectionHero {
+                    blocks {
+                        ... on ComponentBlocksSectionHero {
                             __typename
-                            Title
-                            Description
+                            title
+                            description
                         }
-                        ... on ComponentBlockSectionAbout {
+                        ... on ComponentBlocksSectionAbout {
                             __typename
-                            Title
-                            Content
-                            MediaFirst
-                            Readmore {
-                                Label
-                                Url
+                            title
+                            content
+                            mediaFirst
+                            action {
+                                label
+                                url
                             }
-                            Media {
+                            media {
                                 data {
                                     attributes {
                                         url
+                                    }
+                                }
+                            }
+                        }
+                        ... on ComponentBlocksSectionProjects {
+                            __typename
+                            title
+                            description
+                            projects {
+                                data {
+                                    id
+                                    attributes {
+                                        slug
+                                        name
+                                        description
+                                        startedAt
+                                        thumbnail {
+                                            data {
+                                                attributes {
+                                                    url
+                                                    alternativeText
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        ... on ComponentBlocksSectionArticles {
+                            __typename
+                            title
+                            description
+                            articles {
+                                data {
+                                    id
+                                    attributes {
+                                        slug
+                                        title
+                                        date
+                                        description
+                                        content
+                                        thumbnail {
+                                            data {
+                                                attributes {
+                                                    url
+                                                }
+                                            }
+                                        }
+                                        author {
+                                            data {
+                                                attributes {
+                                                    username
+                                                }
+                                            }
+                                        }
+                                        category {
+                                            data {
+                                                attributes {
+                                                    title
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }

@@ -6,7 +6,7 @@ gql`
         navigation {
             data {
                 attributes {
-                    Logo {
+                    logo {
                         data {
                             attributes {
                                 url
@@ -15,11 +15,11 @@ gql`
                             }
                         }
                     }
-                    Menus {
-                        Label
-                        Title
-                        Target
-                        Url
+                    menus {
+                        label
+                        title
+                        target
+                        url
                     }
                 }
             }

@@ -1,50 +1,46 @@
 import { cmsImageLoader } from "@/app/_utils/imageLoader";
+import { ComponentBlocksSectionAbout } from "@/graphql/codegen/graphql";
 import { Box, Button, Container, Flex, Grid, Heading, Section, Text } from "@radix-ui/themes";
-import { ChevronsDown, MoveRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React from "react";
 
 // Define - type of props
-export type TAboutSectionProps = Readonly<{
-    Title: string;
-    Content: string;
-    MediaFirst: boolean;
-    Media: {
-        url: string;
-        alternativeText: string;
-    };
-    Readmore: {
-        Label: string;
-        Url: string;
-    };
-}>;
+export type TAboutSectionProps = Readonly<
+    ComponentBlocksSectionAbout & {
+        className: string;
+    }
+>;
 
 // Section - hero section
-const AboutSection = ({ Title, Content, MediaFirst = false, Media, Readmore }: TAboutSectionProps) => {
+const AboutSection = ({ className, title, content, media, action }: TAboutSectionProps) => {
     const router = useRouter();
+    const formattedText = content.replace(/\n/g, "<br />");
 
     return (
-        <Section className="bg-gray-200">
-            <Container>
-                <Grid columns="68% 32%" gap="6">
+        <Section className={className} size="2">
+            <Container size="4">
+                <Grid columns="72% 28%" gap="6">
                     {/* Component - title & text */}
                     <Flex direction="column" p="4" gap="4">
                         {/* Title */}
-                        <Heading as="h1" size="4">
-                            {Title}
+                        <Heading as="h2" size="4">
+                            {title}
                         </Heading>
 
                         {/* Component - description */}
-                        <Flex className="text-justify" gap="4">
+                        <Flex direction="column" className="text-justify" gap="4">
                             {/* Text - content */}
-                            <Text color="gray" as="div" className="whitespace-preline">
-                                {Content}
-                            </Text>
+                            <Text color="gray" dangerouslySetInnerHTML={{ __html: formattedText }} />
 
                             {/* Button - read more */}
-                            <Button onClick={() => router.push(Readmore.Url)} variant="soft" highContrast>
-                                {Readmore.Label} <MoveRight />
+                            <Button
+                                onClick={() => router.push(action.url)}
+                                variant="outline"
+                                highContrast
+                                style={{ width: "fit-content" }}
+                            >
+                                {action.label} <ArrowRight />
                             </Button>
                         </Flex>
                     </Flex>
@@ -56,8 +52,8 @@ const AboutSection = ({ Title, Content, MediaFirst = false, Media, Readmore }: T
                                 width={120}
                                 height={120}
                                 loader={cmsImageLoader}
-                                src={Media.url || ""}
-                                alt={Media.alternativeText || ""}
+                                src={media.data?.attributes?.url || ""}
+                                alt={media.data?.attributes?.alternativeText || ""}
                                 className="w-full"
                             />
                         </Box>

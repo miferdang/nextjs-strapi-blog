@@ -1,33 +1,36 @@
-import { Box, Flex, Heading, Section, Text } from "@radix-ui/themes";
+import { ComponentBlocksSectionHero } from "@/graphql/codegen/graphql";
+import { Box, Container, Flex, Heading, Section, Text } from "@radix-ui/themes";
 import { ChevronsDown } from "lucide-react";
 import React from "react";
 
 // Define - type of props
-export type THeroSectionProps = Readonly<{
-    Title: string;
-    Description: string;
-}>;
+export type THeroSectionProps = Readonly<
+    ComponentBlocksSectionHero & {
+        className: string;
+    }
+>;
 
 // Section - hero section
-const HeroSection = ({ Title, Description }: THeroSectionProps) => {
+const HeroSection = ({ className = "bg-white", title, description }: THeroSectionProps) => {
     return (
-        <Box>
-            <Section p="4">
-                <Flex direction="column" align="center" justify="center" height="400px" gap="4">
+        <Section className={className} p="4" size="2">
+            <Container size="4">
+                <Flex direction="column" align="center" justify="center" height="360px" gap="4">
                     {/* Title */}
                     <Heading as="h1" size="8" className="text-center">
-                        {Title}
+                        {title}
                     </Heading>
 
                     {/* Component - description */}
                     <Box maxWidth="600px" className="text-center">
-                        <Text color="gray">{Description}</Text>
+                        <Text color="gray">{description}</Text>
                     </Box>
 
-                    <ChevronsDown  className="mt-4"/>
+                    {/* Icon - move down */}
+                    <ChevronsDown className="mt-4" />
                 </Flex>
-            </Section>
-        </Box>
+            </Container>
+        </Section>
     );
 };
 
