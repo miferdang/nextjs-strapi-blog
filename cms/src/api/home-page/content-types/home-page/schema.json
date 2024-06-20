@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "Blocks": {
+    "blocks": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -24,9 +24,12 @@
       },
       "type": "dynamiczone",
       "components": [
-        "block.section-hero",
-        "block.section-about"
-      ]
+        "blocks.section-hero",
+        "blocks.section-about",
+        "blocks.section-projects",
+        "blocks.section-articles"
+      ],
+      "required": true
     }
   }
 }

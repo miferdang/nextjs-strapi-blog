@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blocks_section_articles",
+  "info": {
+    "displayName": "SectionArticles",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article"
+    }
+  }
+}

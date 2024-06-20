@@ -1,29 +1,29 @@
 {
-  "collectionName": "components_menu_links",
+  "collectionName": "components_components_links",
   "info": {
     "displayName": "Link",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "Label": {
+    "label": {
       "type": "string",
       "required": true,
       "maxLength": 1000,
       "minLength": 1
     },
-    "Title": {
+    "title": {
       "type": "string",
       "maxLength": 1000,
       "minLength": 1
     },
-    "Url": {
+    "url": {
       "type": "string",
       "required": true,
       "maxLength": 1000,
       "minLength": 1
     },
-    "Target": {
+    "target": {
       "type": "enumeration",
       "enum": [
         "_blank",
@@ -35,13 +35,13 @@
       "default": "_self",
       "required": true
     },
-    "Icon": {
-      "allowedTypes": [
-        "images"
-      ],
+    "icon": {
       "type": "media",
       "multiple": false,
-      "required": false
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

@@ -6,19 +6,19 @@
   },
   "options": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
-      "required": true,
+      "required": false,
       "maxLength": 500,
       "minLength": 1
     },
-    "Content": {
+    "content": {
       "type": "richtext",
       "required": true,
       "maxLength": 5000,
       "minLength": 1
     },
-    "Media": {
+    "media": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -27,15 +27,15 @@
         "videos"
       ]
     },
-    "MediaFirst": {
+    "mediaFirst": {
       "type": "boolean",
       "default": false,
       "required": true
     },
-    "Readmore": {
+    "action": {
       "type": "component",
       "repeatable": false,
-      "component": "button.link",
+      "component": "components.button",
       "required": true
     }
   }

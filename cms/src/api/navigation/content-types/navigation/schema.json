@@ -4,7 +4,8 @@
   "info": {
     "singularName": "navigation",
     "pluralName": "navigations",
-    "displayName": "Navigation"
+    "displayName": "Navigation",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,7 +16,7 @@
     }
   },
   "attributes": {
-    "Menus": {
+    "menus": {
       "type": "component",
       "repeatable": true,
       "pluginOptions": {
@@ -23,20 +24,23 @@
           "localized": true
         }
       },
-      "component": "menu.link"
+      "component": "components.link",
+      "required": true,
+      "max": 100,
+      "min": 1
     },
-    "Logo": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "required": true
+      }
     }
   }
 }

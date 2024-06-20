@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_components_cards",
+  "info": {
+    "displayName": "Card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 500,
+      "required": true,
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "minLength": 1
+    },
+    "media": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
