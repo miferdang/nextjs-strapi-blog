@@ -1,10 +1,10 @@
 {
-  "name": "simple-js-blog",
+  "name": "nextjs-strapi-blog-cms",
   "private": true,
   "version": "0.1.0",
   "description": "A simple blog built with Nextjs + Strapi & Graphql",
   "scripts": {
-    "develop": "strapi develop",
+    "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
@@ -14,6 +14,7 @@
     "@strapi/plugin-graphql": "^4.24.5",
     "@strapi/plugin-i18n": "4.24.5",
     "@strapi/plugin-users-permissions": "4.24.5",
+    "@strapi/provider-email-nodemailer": "^4.25.1",
     "@strapi/strapi": "4.24.5",
     "mysql": "2.18.1",
     "react": "^18.0.0",
