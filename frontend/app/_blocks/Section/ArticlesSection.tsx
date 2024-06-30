@@ -20,7 +20,7 @@ const ArticlesSection = ({ className = "bg-white", title, articles }: TArticlesS
     return (
         <Section className={className} size="4">
             <Container size="4">
-                <Flex direction="column" gap="8" align="center">
+                <Flex direction="column" gap="8" align="center" px="4">
                     {/* Title */}
                     <Heading as="h2" size="6" className="text-center">
                         {title}
