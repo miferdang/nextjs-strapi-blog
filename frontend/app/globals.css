@@ -1,5 +1,5 @@
-@import "tailwindcss/base";
 @import "@radix-ui/themes/styles.css";
+@import "tailwindcss/base";
 
 @tailwind components;
 @tailwind utilities;
