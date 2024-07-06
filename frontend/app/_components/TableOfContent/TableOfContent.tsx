@@ -10,13 +10,6 @@ export type ITocs = {
     label?: string;
 }[];
 
-// Define - type of props
-type TProps = Readonly<{
-    tocs: { id?: string; label?: string }[];
-    currentTocId: string;
-    navigateToTocId: (tocId: string) => void;
-}>;
-
 // Component - table of content
 const TableOfContent = ({ content }: any) => {
     const [currentTocId, setCurrentTocId] = useState<string>(window.location.hash.substring(1));
