@@ -1,5 +1,4 @@
 import { Theme } from "@radix-ui/themes";
-import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
 import ApolloProvider from "./_providers/ApolloProvider";
@@ -12,7 +11,7 @@ type TProps = Readonly<{
 
 // Config - meta tag information
 export const metadata: Metadata = {
-    title: "Simple Js Blog",
+    title: "Nextjs Strapi Blog",
     description: "The journey of a little fox",
 };
 

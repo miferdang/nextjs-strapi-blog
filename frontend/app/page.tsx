@@ -11,7 +11,7 @@ export default function HomePage() {
     const { blocks } = data.homePage?.data?.attributes ?? {};
 
     return (
-        <Flex direction="column">
+        <Flex direction="column" width="100%">
             {blocks?.map((block, idx: number) => {
                 return block ? getBlock(block, idx) : null;
             })}
