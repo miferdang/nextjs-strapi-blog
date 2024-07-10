@@ -39,7 +39,6 @@ export default function ProjectsPage() {
         if (currentPage > (projects?.meta?.pagination?.pageCount || 1)) {
             observer.disconnect();
         }
-        console.log(observer);
         return () => observer.disconnect();
     }, [isIntersecting]);
 
@@ -57,55 +56,53 @@ export default function ProjectsPage() {
     }, [isIntersecting]);
 
     return (
-        <Box>
-            <Container size="4" px="4">
-                {/* Component - heading */}
-                <Flex direction="column" align="center" justify="center" gap="4" py="8">
-                    {/* Title - title page */}
-                    <Heading as="h1" size="6" className="text-center">
-                        {title}
-                    </Heading>
+        <Container size="4" px="4">
+            {/* Component - heading */}
+            <Flex direction="column" align="center" justify="center" gap="4" py="8">
+                {/* Title - title page */}
+                <Heading as="h1" size="6" className="text-center">
+                    {title}
+                </Heading>
 
-                    {/* Component - description */}
-                    <Box maxWidth="600px" className="text-center">
-                        <Text color="gray">{description}</Text>
-                    </Box>
-                </Flex>
+                {/* Component - description */}
+                <Box maxWidth="600px" className="text-center">
+                    <Text color="gray">{description}</Text>
+                </Box>
+            </Flex>
 
-                {/* List - projects */}
-                <Grid columns="4" gap="4" width="100%" mb="8">
-                    {visibleProjects.length
-                        ? visibleProjects.map((project: any, idx: number) => (
-                              <Card
-                                  key={idx}
-                                  className="text-center"
-                                  onClick={() => router.push(`/projects/${project.id}/${project.attributes?.slug}`)}
-                              >
-                                  <Image
-                                      width={120}
-                                      height={120}
-                                      loader={cmsImageLoader}
-                                      src={project.attributes?.thumbnail?.data?.attributes?.url || ""}
-                                      alt={project.attributes?.name || ""}
-                                      className="w-full mb-4"
-                                  />
-                                  {/* Title - project name */}
-                                  <Heading as="h6" size="3" mb="1">
-                                      {project.attributes?.name}
-                                  </Heading>
+            {/* List - projects */}
+            <Grid columns="4" gap="4" width="100%" mb="8">
+                {visibleProjects.length
+                    ? visibleProjects.map((project: any, idx: number) => (
+                          <Card
+                              key={idx}
+                              className="text-center"
+                              onClick={() => router.push(`/projects/${project.id}/${project.attributes?.slug}`)}
+                          >
+                              <Image
+                                  width={120}
+                                  height={120}
+                                  loader={cmsImageLoader}
+                                  src={project.attributes?.thumbnail?.data?.attributes?.url || ""}
+                                  alt={project.attributes?.name || ""}
+                                  className="w-full mb-4"
+                              />
+                              {/* Title - project name */}
+                              <Heading as="h6" size="3" mb="1">
+                                  {project.attributes?.name}
+                              </Heading>
 
-                                  {/* Text - time start project */}
-                                  <Text color="gray">Date start: {project.attributes?.startedAt}</Text>
-                              </Card>
-                          ))
-                        : null}
-                </Grid>
+                              {/* Text - time start project */}
+                              <Text color="gray">Date start: {project.attributes?.startedAt}</Text>
+                          </Card>
+                      ))
+                    : null}
+            </Grid>
 
-                {/* Text - loading more */}
-                <Text ref={ref} className="text-center">
-                    {currentPage <= (projects?.meta?.pagination?.pageCount || 0) ? "Loading..." : null}
-                </Text>
-            </Container>
-        </Box>
+            {/* Text - loading more */}
+            <Text ref={ref} className="text-center">
+                {currentPage <= (projects?.meta?.pagination?.pageCount || 0) ? "Loading..." : null}
+            </Text>
+        </Container>
     );
 }

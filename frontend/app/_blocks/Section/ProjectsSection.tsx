@@ -15,18 +15,18 @@ export type TProjectsSectionProps = Readonly<
 // Section - projects section
 const ProjectsSection = ({ className = "bg-white", title, projects }: TProjectsSectionProps) => {
     const router = useRouter();
-   
+
     return (
         <Section className={className} size="4">
             <Container size="4">
-                <Flex direction="column" gap="8" align="center">
+                <Flex direction="column" gap="8" align="center" px="4">
                     {/* Title */}
                     <Heading as="h2" size="6" className="text-center">
                         {title}
                     </Heading>
 
                     {/* List - projects */}
-                    <Grid columns="4" gap="4" width="100%">
+                    <Grid columns={{ initial: "2", md: "4" }} gap="4" width="100%">
                         {projects?.data?.length
                             ? projects?.data?.map((project, idx) => (
                                   <Card
