@@ -20,9 +20,9 @@ const AboutSection = ({ className, title, content, media, action }: TAboutSectio
     return (
         <Section className={className} size="2">
             <Container size="4">
-                <Grid columns="72% 28%" gap="6">
+                <Flex align="start" gap="6" px="4" className="md:flex-row flex-col">
                     {/* Component - title & text */}
-                    <Flex direction="column" p="4" gap="4">
+                    <Flex direction="column" gap="4" className="xl:basis-[76%] lg:basis-[68%] basis-[50%] md:order-1 order-2">
                         {/* Title */}
                         <Heading as="h2" size="4">
                             {title}
@@ -46,19 +46,17 @@ const AboutSection = ({ className, title, content, media, action }: TAboutSectio
                     </Flex>
 
                     {/* Component - logo */}
-                    <Box p="4">
-                        <Box className="rounded-xl overflow-hidden">
-                            <Image
-                                width={120}
-                                height={120}
-                                loader={cmsImageLoader}
-                                src={media.data?.attributes?.url || ""}
-                                alt={media.data?.attributes?.alternativeText || ""}
-                                className="w-full"
-                            />
-                        </Box>
+                    <Box className="rounded-xl overflow-hidden xl:basis-[24%] lg:basis-[32%] basis-[50%] md:order-2 order-1 w-full">
+                        <Image
+                            width={120}
+                            height={120}
+                            loader={cmsImageLoader}
+                            src={media.data?.attributes?.url || ""}
+                            alt={media.data?.attributes?.alternativeText || ""}
+                            className="w-full"
+                        />
                     </Box>
-                </Grid>
+                </Flex>
             </Container>
         </Section>
     );
