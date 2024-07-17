@@ -42,7 +42,7 @@ const ContactForm = () => {
         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={ContactFormSchema}>
             {({ handleChange, values, errors, touched }) => (
                 <Form>
-                    <Flex direction="column" gap="5" width="480px">
+                    <Flex direction="column" gap="5" width={{ initial: "100%", sm: "480px" }}>
                         {/* Callout - alert message */}
                         {createMessageStatus.called && !createMessageStatus.loading && !createMessageStatus.error ? (
                             <Callout.Root color="green">

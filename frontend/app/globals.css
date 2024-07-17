@@ -1,5 +1,10 @@
-@import "@radix-ui/themes/styles.css";
 @import "tailwindcss/base";
+@import "@radix-ui/themes/styles.css";
 
 @tailwind components;
 @tailwind utilities;
+
+/* Radix */
+.rt-Container {
+    max-width: 100%;;
+}
