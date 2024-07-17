@@ -7,10 +7,23 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 // Define - type of props
-
+type Props = Readonly<{
+    id: string;
+    slug: string;
+    thumbnail?: {
+        url: string;
+        alternativeText: string;
+    };
+    category: string;
+    content: string;
+    title: string;
+    description: string;
+    authorName: string;
+    date: string;
+}>;
 
 // Component - article card
-const ArticleCard = ({ id, slug, thumbnail, category, content, title, description, authorName, date }: any) => {
+const ArticleCard = ({ id, slug, thumbnail, category, content, title, description, authorName, date }: Props) => {
     const router = useRouter();
 
     return (
@@ -26,7 +39,7 @@ const ArticleCard = ({ id, slug, thumbnail, category, content, title, descriptio
             />
 
             {/* Component - information       */}
-            <Flex direction="column" gap="2">
+            <Flex direction="column" gap="2" className="text-left">
                 <Flex gap="2">
                     {/* Tag - category */}
                     <Badge variant="outline" className="w-fit" mb="2">

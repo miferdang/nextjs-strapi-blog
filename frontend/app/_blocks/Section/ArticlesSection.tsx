@@ -1,3 +1,4 @@
+import ArticleCard from "@/app/_components/Card/ArticleCard";
 import { calculateReadingTime } from "@/app/_utils/calculateReadingTime";
 import { cmsImageLoader } from "@/app/_utils/imageLoader";
 import { ComponentBlocksSectionArticles } from "@/graphql/codegen/graphql";
@@ -30,6 +31,7 @@ const ArticlesSection = ({ className = "bg-white", title, articles }: TArticlesS
                     <Grid columns="2" gap="4" width="100%">
                         {articles?.data?.length
                             ? articles?.data?.map((article, idx) => (
+                                
                                   <Card
                                       key={idx}
                                       className="text-center"
@@ -46,7 +48,7 @@ const ArticlesSection = ({ className = "bg-white", title, articles }: TArticlesS
                                       />
 
                                       {/* Component - information       */}
-                                      <Flex direction="column" gap="2">
+                                      <Flex direction="column" gap="2" className="text-left">
                                           <Flex gap="2">
                                               {/* Tag - category */}
                                               <Badge variant="outline" className="w-fit" mb="2">

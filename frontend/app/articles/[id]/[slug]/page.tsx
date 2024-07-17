@@ -140,7 +140,7 @@ export default function ArticlePage({ params }: TProps) {
                     </Flex>
 
                     {/* Component - comment form */}
-                    <Flex direction="column" gap="4">
+                    <Flex direction="column" gap="4" mb="8">
                         {/* Title - commen & total */}
                         <Heading as="h5" size="5">
                             Your comment

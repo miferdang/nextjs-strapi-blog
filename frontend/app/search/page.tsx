@@ -61,7 +61,7 @@ export default function SearchPage() {
                               />
 
                               {/* Component - information       */}
-                              <Flex direction="column" gap="2">
+                              <Flex direction="column" gap="2" className="text-left">
                                   <Flex gap="2">
                                       {/* Tag - category */}
                                       <Badge variant="outline" className="w-fit" mb="2">
