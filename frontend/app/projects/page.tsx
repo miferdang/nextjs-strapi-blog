@@ -71,7 +71,7 @@ export default function ProjectsPage() {
             </Flex>
 
             {/* List - projects */}
-            <Grid columns="4" gap="4" width="100%" mb="8">
+            <Grid columns={{ initial: "1", sm: "2", md: "4" }} gap="4" width="100%" mb="8">
                 {visibleProjects.length
                     ? visibleProjects.map((project: any, idx: number) => (
                           <Card

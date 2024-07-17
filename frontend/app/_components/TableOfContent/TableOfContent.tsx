@@ -29,7 +29,7 @@ const TableOfContent = ({ content }: any) => {
     const tocs = renderTocs(content);
 
     return (
-        <Flex direction="column" className="sticky top-[100px] max-w-[320px]" gap="4">
+        <Flex direction="column" className="sticky top-[80px]" display={{initial: "none", md: "flex"}} maxWidth={{md: "120px", lg: "260px"}} gap="4">
             {/* Title  */}
             <Heading as="h5" size="4" highContrast>
                 Table of contents

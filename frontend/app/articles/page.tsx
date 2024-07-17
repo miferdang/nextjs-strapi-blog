@@ -72,7 +72,7 @@ export default function ArticlesPage() {
             </Flex>
 
             {/* List - articles */}
-            <Grid columns="2" gap="4" width="100%" mb="8">
+            <Grid columns={{ initial: "1", sm: "2" }} gap="4" width="100%" mb="8">
                 {visibleArticles.length
                     ? visibleArticles.map((article: any, idx: number) => (
                           <Card

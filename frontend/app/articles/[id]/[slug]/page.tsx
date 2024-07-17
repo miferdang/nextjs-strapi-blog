@@ -94,7 +94,7 @@ export default function ArticlePage({ params }: TProps) {
                               
             <Container size="2" px="4" className="relative">
                 {/* Components - tocs */}
-                <Box className="absolute top-[20px] left-[20px] h-full">
+                <Box className="absolute top-[12px] left-[20px] h-full">
                     <TableOfContent content={content} />
                 </Box>
 
