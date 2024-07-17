@@ -26,7 +26,7 @@ const ProjectsSection = ({ className = "bg-white", title, projects }: TProjectsS
                     </Heading>
 
                     {/* List - projects */}
-                    <Grid columns={{ initial: "2", md: "4" }} gap="4" width="100%">
+                    <Grid columns={{ initial: "1", sm: "2", md: "4" }} gap="4" width="100%">
                         {projects?.data?.length
                             ? projects?.data?.map((project, idx) => (
                                   <Card

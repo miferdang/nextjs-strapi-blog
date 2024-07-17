@@ -21,14 +21,14 @@ const ArticlesSection = ({ className = "bg-white", title, articles }: TArticlesS
     return (
         <Section className={className} size="4">
             <Container size="4">
-                <Flex direction="column" gap="8" align="center" px="4">
+                <Flex direction="column" gap="8" align="center" px="4" >
                     {/* Title */}
                     <Heading as="h2" size="6" className="text-center">
                         {title}
                     </Heading>
 
                     {/* List - articles */}
-                    <Grid columns="2" gap="4" width="100%">
+                    <Grid columns={{ initial: "1", sm: "2" }}  gap="4" width="100%">
                         {articles?.data?.length
                             ? articles?.data?.map((article, idx) => (
                                 
