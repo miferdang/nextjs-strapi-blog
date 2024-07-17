@@ -24,7 +24,7 @@ const Dropdown = ({ trigger, content, position = "left" }: TProps) => {
                 <Flex
                     direction="column"
                     gap="6"
-                    className={`md:hidden flex bg-white absolute mt-1 ${position}-0 border rounded-md shadow z-50`}
+                    className={`md:hidden flex bg-white absolute top-8 ${position}-0 border rounded-md shadow z-50`}
                     p="4"
                     width="160px"
                 >
